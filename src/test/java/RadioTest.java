@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
 
-    Radio radio = new Radio();
+    ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-    Radio radio45 = new Radio(45);
+    ru.netology.domain.Radio radio45 = new ru.netology.domain.Radio(45);
 
     @Test
     public void shouldSetCurrentStation10() {
