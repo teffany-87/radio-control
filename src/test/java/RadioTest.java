@@ -6,268 +6,206 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class RadioTest {
 
+    Radio radio = new Radio();
+
+    Radio radio45 = new Radio(45);
+
     @Test
-    public void shouldSetCurrentStation() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldSetCurrentStation10() {
 
         radio.setCurrentStation(10);
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentStation());
     }
+
     @Test
-    public void shouldSetCurrentStation0() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldSetCurrentStation45() {
+
+        radio45.setCurrentStation(45);
+        assertEquals(0, radio45.getCurrentStation());
+    }
+
+    @Test
+    public void shouldSetCurrentStation44() {
+
+        radio45.setCurrentStation(44);
+        assertEquals(44, radio45.getCurrentStation());
+    }
+
+
+    @Test
+    public void shouldSetCurrentStation() {
 
         radio.setCurrentStation(-1);
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentStation());
     }
+
     @Test
-    public void shouldSetCurrentVolume0() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldSetCurrentVolume() {
 
         radio.setCurrentVolume(-1);
-
-        int expected = 0;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
-    @Test
-    public void shouldSetCurrentVolume11() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentVolume(11);
-
-        int expected = 0;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
-    public void shouldNextStation() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldSetCurrentVolume1() {
 
-        radio.setCurrentStation(0);
-        radio.NextStation();
-
-        int expected = 1;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
+        radio.setCurrentVolume(1);
+        assertEquals(1, radio.getCurrentVolume());
     }
+
+    @Test
+    public void shouldSetCurrentVolume100() {
+
+        radio.setCurrentVolume(100);
+        assertEquals(100, radio.getCurrentVolume());
+    }
+
 
     @Test
     public void shouldNextStation1() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-        radio.setCurrentStation(1);
-        radio.NextStation();
+        radio.setCurrentStation(0);
+        radio.nextStation();
 
-        int expected = 2;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentStation());
     }
 
-    @Test
-    public void shouldNextStation8() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentStation(8);
-        radio.NextStation();
-
-        int expected = 9;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void shouldNextStation9() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+
+        radio.setCurrentStation(8);
+        radio.nextStation();
+
+        assertEquals(9, radio.getCurrentStation());
+    }
+
+    @Test
+    public void shouldNextStation44() {
+
+        radio45.setCurrentStation(43);
+        radio45.nextStation();
+
+        assertEquals(44, radio45.getCurrentStation());
+    }
+
+    @Test
+    public void shouldNextStation0() {
+
+        radio45.setCurrentStation(44);
+        radio45.nextStation();
+
+        assertEquals(0, radio45.getCurrentStation());
+    }
+
+
+    @Test
+    public void shouldNextStation10() {
 
         radio.setCurrentStation(9);
-        radio.NextStation();
+        radio.nextStation();
 
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldPrevStation() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentStation(0);
-        radio.PrevStation();
-
-        int expected = 9;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldPrevStation1() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentStation(1);
-        radio.PrevStation();
-
-        int expected = 0;
-        int actual = radio.getCurrentStation();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
     public void shouldPrevStation9() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-        radio.setCurrentStation(9);
-        radio.PrevStation();
+        radio.setCurrentStation(0);
+        radio.prevStation();
 
-        int expected = 8;
-        int actual = radio.getCurrentStation();
+        assertEquals(9, radio.getCurrentStation());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldPrevStation44() {
+
+        radio45.setCurrentStation(0);
+        radio45.prevStation();
+
+        assertEquals(44, radio45.getCurrentStation());
+    }
+
+
+    @Test
+    public void shouldPrevStation0() {
+
+        radio.setCurrentStation(1);
+        radio.prevStation();
+
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
     public void shouldPrevStation8() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-        radio.setCurrentStation(8);
-        radio.PrevStation();
+        radio.setCurrentStation(9);
+        radio.prevStation();
 
-        int expected = 7;
-        int actual = radio.getCurrentStation();
+        assertEquals(8, radio.getCurrentStation());
+    }
 
-        assertEquals(expected, actual);
+    @Test
+    public void shouldPrevStation43() {
+
+        radio45.setCurrentStation(44);
+        radio45.prevStation();
+
+        assertEquals(43, radio45.getCurrentStation());
     }
 
     @Test
     public void shouldCurrentVolume() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-        radio.setCurrentVolume(8);
-
-        int expected = 8;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        radio.setCurrentVolume(99);
+        assertEquals(99, radio.getCurrentVolume());
     }
 
     @Test
-    public void shouldIncreaseVolume9() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldCurrentVolume101() {
 
-        radio.setCurrentVolume(9);
-        radio.IncreaseVolume();
-
-        int expected = 10;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        radio.setCurrentVolume(101);
+        assertEquals(0, radio.getCurrentVolume());
     }
+
 
     @Test
-    public void shouldIncreaseVolume10() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
+    public void shouldIncreaseVolume100() {
 
-        radio.setCurrentVolume(10);
-        radio.IncreaseVolume();
+        radio.setCurrentVolume(100);
+        radio.increaseVolume();
 
-        int expected = 10;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(100, radio.getCurrentVolume());
     }
+
 
     @Test
     public void shouldIncreaseVolume() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
         radio.setCurrentVolume(0);
-        radio.IncreaseVolume();
+        radio.increaseVolume();
 
-        int expected = 1;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(1, radio.getCurrentVolume());
     }
 
-    @Test
-    public void shouldIncreaseVolume1() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentVolume(1);
-        radio.IncreaseVolume();
-
-        int expected = 2;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void shouldReduceVolume1() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
         radio.setCurrentVolume(1);
-        radio.ReduceVolume();
+        radio.reduceVolume();
 
-        int expected = 0;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
     @Test
     public void shouldReduceVolume() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
         radio.setCurrentVolume(0);
-        radio.ReduceVolume();
+        radio.reduceVolume();
 
-        int expected = 0;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
+        assertEquals(0, radio.getCurrentVolume());
     }
 
-    @Test
-    public void shouldReduceVolume10() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
 
-        radio.setCurrentVolume(10);
-        radio.ReduceVolume();
-
-        int expected = 9;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldReduceVolume9() {
-        ru.netology.domain.Radio radio = new ru.netology.domain.Radio();
-
-        radio.setCurrentVolume(9);
-        radio.ReduceVolume();
-
-        int expected = 8;
-        int actual = radio.getCurrentVolume();
-
-        assertEquals(expected, actual);
-    }
 }
